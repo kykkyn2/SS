@@ -12,6 +12,6 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	public String getHelloMessage() {
-		return "안녕하세요 " + userDao.getUser("hamzang").getName();
+		return "안녕하세요 " + userDao.getUser("kykkyn2").getName();
 	}
 }
