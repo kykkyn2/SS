@@ -13,8 +13,36 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
-	<!-- Processes application requests -->
+	
+	
+	<!-- 필터 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- //필터 -->
+	
+	<!-- 세션 관련 -->
+	<!-- 
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+	 -->
+	<!-- //세션 관련 -->
+	
+	<!-- 서블릿 관련 -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -27,7 +55,8 @@
 		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
+	<!-- //서블릿 관련 -->
 
 </web-app>

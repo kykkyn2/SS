@@ -2,6 +2,8 @@ package com.springstory.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,17 @@ public class HomeController {
 	
 	@Autowired
 	private UserService userService;
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/hello.do", method = RequestMethod.GET)
+	
+	@RequestMapping(value = { "/index.htm", "/", "" }, method = RequestMethod.GET)
+	public String siteIndex(HttpServletRequest request, Model model) {
+		
+		String message = "index??";
+		model.addAttribute("message", message );
+		
+		return "home";
+	}
+	
+	@RequestMapping(value = "/test.htm", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
 		String message = userService.getHelloMessage();
@@ -34,5 +43,6 @@ public class HomeController {
 		
 		return "home";
 	}
-	
+
+		
 }
